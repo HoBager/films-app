@@ -1,0 +1,10 @@
+export const MIN_COUNT_PAGES = 1;
+export const FILMS_ON_PAGE = 10;
+export const DEFAULT_PAGE = 1;
+export const AUTH_STORAGE_KEY = "user";
+export const DEFAULT_INPUT_VALUE = "";
+export const FAVORITE_LIST_KEY = "favList";
+export const WATCH_LATER_KEY = "watchLater";
+export const DEFAULT_STORAGE_VALUE = [];
+export const UNAUTH_LISTS_VALUE = [];
+export const DEFAULT_MODAL_VALUE = null;
