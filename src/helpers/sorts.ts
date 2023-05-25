@@ -1,12 +1,12 @@
 import { TypeSort } from "../consts/filters-consts";
 import IFilm from "../interfaces/i-film";
 import { ISearchQusetions } from "../store/reducers/search";
+
 export function sortByGeneres(films: IFilm[], genres: number[]): IFilm[] {
-  return genres.reduce((result, genre) => {
-    return result.filter(({ genre_ids: genreIds }) => {
-      return genreIds.includes(genre);
-    });
-  }, films);
+  return films.filter(({ genre_ids: genreIds }) => {
+    const newGenres = [...new Set([...genreIds, ...genres])];
+    return genreIds.length === newGenres.length;
+  });
 }
 
 export function sortByDate(films: IFilm[], date: string): IFilm[] {
