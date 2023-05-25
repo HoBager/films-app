@@ -28,7 +28,9 @@ export const selectModal = (state: IRootState) => state.modalReducer.modal;
 
 export const selectCardFilm = createSelector(
   [selectAuth, selectFavoriteList, selectWatchList],
-  (auth, favoriteList, watchList) => Object({ auth, favoriteList, watchList })
+  (auth, favoriteList, watchList) =>{ 
+    return {auth, favoriteList, watchList} 
+  }
 );
 
 export const selectSearchPageFilms = createSelector(
@@ -89,11 +91,11 @@ export const selectPage = createSelector(
 export const selectFiltersDeps = createSelector(
   [selectGenres, selectSorts, selectFavoriteList, selectWatchList],
   (genres, sorts, favoriteList, watchList) => {
-    return Object({
+    return {
       genres,
       sorts,
       favoriteList,
       watchList,
-    });
+    };
   }
 );
