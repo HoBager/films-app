@@ -17,10 +17,7 @@ const FilmPage = () => {
       <div className="film__intro">
         <div className="wrapper">
           <div className="film__poster">
-            <img
-              src={`https://image.tmdb.org/t/p/w500${imagePath}`}
-              alt="poster"
-            />
+            <img src={`TestPic.jpg`} alt="poster" />
           </div>
           <div className="film__title">
             <h1 className="film__name">{title}</h1>

@@ -42,11 +42,7 @@ const FilmCard = ({ film }: CardProps) => {
 
   return (
     <div className="film-card">
-      <img
-        className="poster"
-        src={`https://image.tmdb.org/t/p/w500${imagePath}`}
-        alt="Poster"
-      />
+      <img className="poster" src={`TestPic.jpg`} alt="Poster" />
       <div className="card-info">
         <div className="card-main">
           <div className="card-nav">

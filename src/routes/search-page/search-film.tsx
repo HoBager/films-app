@@ -58,10 +58,7 @@ const SearchFilm = () => {
     <div className="search__select">
       <div className="search__film">
         <div className="search__film-poster">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${imagePath}`}
-            alt="poster"
-          />
+          <img src={`TestPic.jpg`} alt="poster" />
         </div>
         <div className="search__film-info">
           <h3>{`${currentFilm.title}`}</h3>
