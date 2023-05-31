@@ -1,5 +1,4 @@
-import React from "react";
-import { LoaderFunction, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import IFilm from "../../interfaces/i-film";
 
 const FilmPage = () => {
@@ -9,13 +8,19 @@ const FilmPage = () => {
     vote_average: voteAverage,
     release_date: releaseDate,
     original_language: originalLanguage,
+    poster_path,
+    backdrop_path,
   } = useLoaderData() as IFilm;
+  const imagePath = poster_path || backdrop_path;
   return (
     <main className="film">
       <div className="film__intro">
         <div className="wrapper">
           <div className="film__poster">
-            <img src="TestPic.jpg" alt="poster" />
+            <img
+              src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+              alt="poster"
+            />
           </div>
           <div className="film__title">
             <h1 className="film__name">{title}</h1>

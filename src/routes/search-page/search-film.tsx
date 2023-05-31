@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   selectSearchPageFilms,
   selectSearchQuestions,
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { SEARCH_QUESTIONS } from "../../consts/filters-consts";
 import { Link } from "react-router-dom";
 import IFilm from "../../interfaces/i-film";
+import idsToGenres from "../../helpers/ids-to-genres";
 
 const DEFAULT_INDEX_VALUE = 0;
 
@@ -30,6 +31,7 @@ const SearchFilm = () => {
   const [currentFilm, setCurrentFilm] = useState<IFilm | null>(
     films[DEFAULT_INDEX_VALUE]
   );
+
   const isAnsweredQuestions =
     Object.keys(searchQuestions).length < Object.keys(SEARCH_QUESTIONS).length;
   const nextFilm = useCallback(selectFilm(films), [films]);
@@ -40,6 +42,7 @@ const SearchFilm = () => {
   useEffect(() => {
     setCurrentFilm(films[DEFAULT_INDEX_VALUE]);
   }, [films]);
+
   if (isAnsweredQuestions) {
     return <h3>{`ответьте на вопросы`}</h3>;
   }
@@ -50,16 +53,20 @@ const SearchFilm = () => {
     );
   }
 
+  const imagePath = currentFilm.poster_path || currentFilm.backdrop_path;
   return (
     <div className="search__select">
       <div className="search__film">
         <div className="search__film-poster">
-          <img src="TestPic.jpg" alt="poster" />
+          <img
+            src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+            alt="poster"
+          />
         </div>
         <div className="search__film-info">
           <h3>{`${currentFilm.title}`}</h3>
           <div className="search__film-genres">
-            <p>{`Жанр: `}</p>
+            <p>{`Жанр: ${idsToGenres(currentFilm.genre_ids)}`}</p>
           </div>
           <div className="search__film-title">{`${currentFilm.overview}`}</div>
         </div>

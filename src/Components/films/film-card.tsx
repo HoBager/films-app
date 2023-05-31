@@ -22,6 +22,7 @@ const FilmCard = ({ film }: CardProps) => {
     selectFilmData(state, film.title)
   );
   const login = useLogin();
+  const imagePath = film.poster_path || film.backdrop_path;
 
   const addFavoriteHandler = useCallback(() => {
     if (auth) {
@@ -41,7 +42,11 @@ const FilmCard = ({ film }: CardProps) => {
 
   return (
     <div className="film-card">
-      <img className="poster" src="TestPic.jpg" alt="Poster" />
+      <img
+        className="poster"
+        src={`https://image.tmdb.org/t/p/w500${imagePath}`}
+        alt="Poster"
+      />
       <div className="card-info">
         <div className="card-main">
           <div className="card-nav">
